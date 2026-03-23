@@ -1,0 +1,45 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Creality Ender-3 V3 KE — Connection Mode",
+        "description": "Choose how Home Assistant will communicate with your printer.\n\n**Native WebSocket** works with stock firmware — no extra software, port 9999.\n\n**Moonraker API** requires Moonraker installed via SSH, port 7125.",
+        "data": { "mode": "Connection mode" }
+      },
+      "connection": {
+        "title": "Creality Ender-3 V3 KE — Printer Address",
+        "description": "Enter the IP address shown on your printer: **Settings → Network**.",
+        "data": {
+          "host": "Printer IP address",
+          "port": "Port"
+        }
+      },
+      "offsets": {
+        "title": "Creality Ender-3 V3 KE — Temperature Correction",
+        "description": "Some Creality printers report temperatures slightly lower than the actual value via the API. Enter the correction to add to each raw reading.\n\n**Bed offset +10 °C** is the typical value for the V3 KE.\n\nSet to **0** if your temperatures are already accurate.",
+        "data": {
+          "bed_temp_offset": "Bed temperature offset (°C)",
+          "nozzle_temp_offset": "Nozzle temperature offset (°C)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not connect to the printer. Check IP address (Settings → Network on printer), port (9999 for WebSocket), and make sure both are on the same network."
+    },
+    "abort": {
+      "already_configured": "This printer is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Temperature Correction",
+        "description": "Adjust temperature offsets added to raw printer readings.",
+        "data": {
+          "bed_temp_offset": "Bed temperature offset (°C)",
+          "nozzle_temp_offset": "Nozzle temperature offset (°C)"
+        }
+      }
+    }
+  }
+}
