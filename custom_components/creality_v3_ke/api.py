@@ -172,10 +172,10 @@ class CrealityWebSocketAPI:
             + self._bed_offset, 1
         )
 
-        # Progress / time
+        # Progress / time — stored as integer seconds; HA converts to h/m/s via DURATION device_class
         progress = _f(_first(r.get("printProgress"), r.get("progress"), default=0))
         print_time = _i(_first(r.get("printJobTime"), r.get("printTime"), default=0))
-        time_left = _i(_first(r.get("printLeftTime"), r.get("remainingTime"), default=0))
+        time_left = max(0, _i(_first(r.get("printLeftTime"), r.get("remainingTime"), default=0)))
 
         # Filename — strip full path
         raw_fn = str(_first(r.get("printFileName"), r.get("fileName"),
@@ -212,7 +212,7 @@ class CrealityWebSocketAPI:
             KEY_BED_TARGET: bed_target,
             KEY_PROGRESS: round(progress, 1),
             KEY_PRINT_TIME: print_time,
-            KEY_PRINT_TIME_LEFT: max(0, time_left),
+            KEY_PRINT_TIME_LEFT: time_left,
             KEY_FILENAME: filename,
             KEY_FAN_SPEED: round(fan_speed, 1),
             KEY_PRINT_SPEED: round(speed_level, 1),
