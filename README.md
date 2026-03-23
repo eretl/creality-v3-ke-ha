@@ -1,4 +1,4 @@
-# ⚠️ ** Vibe coded use at your own risk **
+# ⚠️ Vibe coded use at your own risk
 
 # Creality Ender-3 V3 KE — Home Assistant Integration
 
